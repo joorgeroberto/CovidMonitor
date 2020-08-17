@@ -16,29 +16,29 @@ const Home = ({
   countriesData,
   loading,
 }) => {
-  const global = {
-    "NewConfirmed": 100282,
-    "TotalConfirmed": 1162857,
-    "NewDeaths": 5658,
-    "TotalDeaths": 63263,
-    "NewRecovered": 15405,
-    "TotalRecovered": 230845
-  };
+  // const global = {
+  //   "NewConfirmed": 100282,
+  //   "TotalConfirmed": 1162857,
+  //   "NewDeaths": 5658,
+  //   "TotalDeaths": 63263,
+  //   "NewRecovered": 15405,
+  //   "TotalRecovered": 230845
+  // };
   
   useEffect(() => {
-    //if (firstTime) getData();
+    if (firstTime) getData();
     //console.log(firstTime, globalData, countriesData);
   }, [firstTime]);
 
   return (
     <View style={styles.Container}>
-      {/* {loading || globalData === null || countriesData === null ?  */}
-      {loading || global === null || countries === null ?
+    {/* {loading || global === null || countries === null ? */}
+      {loading || globalData === null || countriesData === null ?
         <Text>Loading...</Text>
         :
         <>
-          <GlobalHeader data={global} />
-          <CountriesList data={countries} />
+          <GlobalHeader data={globalData} />
+          <CountriesList navigation={navigation} data={countriesData} />
         </>
       }
     </View>

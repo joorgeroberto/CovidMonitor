@@ -13,9 +13,14 @@ import {
   InfoContainer,
 } from './style';
 
-const ListItem = ({data}) => {
+const ListItem = ({data, navigation}) => {
   return (
-    <Container onPress={() => {}}>
+    <Container
+      onPress={() => {
+        navigation.navigate('CountryInfo', {
+          initialCountryData: data,
+        });
+      }}>
       <CodeSquare>
         <TextCodeSquare>{data.CountryCode}</TextCodeSquare>
       </CodeSquare>

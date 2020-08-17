@@ -5,7 +5,7 @@ import {CountriesModal, ModalIndicator} from './style';
 import {ListItem} from '../../Components';
 const {width, height} = Dimensions.get('window');
 
-const CountriesList = ({data}) => {
+const CountriesList = ({data, navigation}) => {
   let offsetModal = 0;
   let openedModal = false;
   const translateY = new Animated.Value(0);
@@ -32,16 +32,14 @@ const CountriesList = ({data}) => {
         translateY.setValue(offsetModal);
         translateY.setOffset(0);
         offsetModal = 0;
-        console.log('else')
         openedModal = false;
       }
-     
+
       Animated.timing(translateY, {
         toValue: openedModal ? -200 : 0,
         duration: 200,
         useNativeDriver: true,
       }).start(() => {
-        console.log('animation')
         //offsetModal = openedModal ? -380 : 0;
         offsetModal = openedModal ? -200 : 0;
         translateY.setOffset(offsetModal);
@@ -77,7 +75,7 @@ const CountriesList = ({data}) => {
         <ModalIndicator />
         <ScrollView style={{marginTop: 16}} nestedScrollEnabled>
           {data.map((country) => (
-            <ListItem data={country} />
+            <ListItem data={country} navigation={navigation} />
           ))}
         </ScrollView>
       </CountriesModal>
